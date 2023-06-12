@@ -3,6 +3,8 @@ import Hero from "@/components/Hero";
 import NavMenu from "@/components/NavMenu";
 import PricingPlan from "@/components/PricingPlan";
 
+export const dynamic = "force-dynamic";
+
 async function getPricingData() {
   try {
     const response = await fetch(
@@ -23,6 +25,7 @@ async function getPricingData() {
 
     return data;
   } catch (error) {
+    console.log(error);
     throw new Error(`Failed to fetch data, ${error}`);
   }
 }
@@ -50,7 +53,7 @@ async function getHeroData() {
   }
 }
 
-export default async function Home() {
+export default async function Page() {
   const pricingData = await getPricingData();
   const pricings = [
     pricingData.data.attributes["plan_01"],
